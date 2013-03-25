@@ -7,23 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accelerate/Accelerate.h>
 #import <QuartzCore/QuartzCore.h>
 #import "MATSOLDefines.h"
 #import "Parenthesis.h"
 
-@interface SolutionsViewController : UIViewController <UIScrollViewDelegate>{
-	
-	float **a;
-	float *b;
-	int size;
-	NSMutableArray *labelsArray;
-	UIScrollView *layoutView;
-	UIView *container;
-    BOOL ip5;
-}
+@interface SolutionsViewController : UIViewController <UIScrollViewDelegate>
 
-@property (readwrite) float **a;
-@property (readwrite) float *b;
+@property (readwrite) __CLPK_complex *a;
+@property (readwrite) __CLPK_complex *b;
 @property (readwrite) int size;
 @property (retain, nonatomic) NSMutableArray *labelsArray;
 @property (retain, nonatomic) UIScrollView *layoutView;

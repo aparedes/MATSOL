@@ -7,6 +7,8 @@
 //
 
 #import "GIDAMatrixViewController.h"
+#import <Accelerate/Accelerate.h>
+
 
 //Private variables
 @interface GIDAMatrixViewController () {
@@ -22,6 +24,7 @@
     //Variable used for >=iPhone 5 Layout
     BOOL ip5;
     BOOL flag;
+    
 }
 
 //Matrix of place holder for the UITextFields (a1, a2, ..., b1, b2, ..., s.a, s.b, ...). Never changes
@@ -69,6 +72,7 @@
             self.navigationItem.rightBarButtonItem=solveButton;
             
             [self initializeArrays];
+            
         }
         return self;
     } else {
@@ -516,29 +520,17 @@
     [(UITextField *)[(GIDAMatrixCell *)[_table cellForRowAtIndexPath:indexPath] viewWithTag:tag] resignFirstResponder];
     
     int i=0, j=0;
-	float **a;
-	float *b;
+    __CLPK_complex *norm_a,*inv_a;
+    __CLPK_complex *bb;
 	float assign=0.0;
-	int matrixState=0;
+	int matrixState=UnsolvedMatrix;
 	NSString *temp;//Every textField will pass through this var
     
 	//Dynamic memory assignment
-	a=(float **)malloc(sizeof(float *)*matrixSize);
-    
-	for (i=0; i<matrixSize; i++) {
-		a[i]=malloc(sizeof(float)*matrixSize);
-	}
-	//an array of this size
-	b=malloc(sizeof(float)*matrixSize);
-	
-	//Be sure both arrays are clean
-	for (i=0; i<matrixSize; i++) {
-		for (j=0; j<matrixSize; j++) {
-			a[i][j]=0.0;
-		}
-		b[i]=0;
-	}
-	
+    norm_a  = malloc(sizeof(__CLPK_complex)*matrixSize*matrixSize);
+    inv_a = malloc(sizeof(__CLPK_complex)*matrixSize*matrixSize);
+    bb = malloc(sizeof(__CLPK_complex)*matrixSize);
+
 	//Fetch all the info from the textFields
 	for (i=0; i<matrixSize; i++) {
 		for (j=0; j<matrixSize+1; j++) {
@@ -550,17 +542,54 @@
 			assign=[temp floatValue];
 			//Pass it to the matrix
 			if (j<matrixSize) {
-				a[i][j]=assign;
+	            norm_a[i+j*matrixSize].r = assign;
+                norm_a[i+j*matrixSize].i = 0;
+                inv_a[i+j*matrixSize].r = assign;
+                inv_a[i+j*matrixSize].i = 0;
 			}
 			else {
-				b[i]=assign;
+	            bb[i].r = assign;
+                bb[i].i = 0;
 			}
 		}
 	}
 	
 	//Send it to gaussj & check if it's a valid matrix
-	matrixState=gaussj(a,matrixSize,b);
+    long m = matrixSize;
+    long n = matrixSize;
+    long nrhs = 1;
+    long lda = m;
+    long ldb = n;
     
+    __CLPK_complex wkopt;
+    __CLPK_complex *work;
+    long lwork;
+    long info;
+    lwork = -1;
+    cgels_("N",&m, &n, &nrhs, norm_a, &lda, bb, &ldb, &wkopt, &lwork, &info);
+    lwork = (int)wkopt.r;
+    work = (__CLPK_complex*)malloc( lwork*sizeof(__CLPK_complex) );
+    cgels_("N",& m, &n, &nrhs, norm_a, &lda, bb, &ldb, work, &lwork, &info);
+
+    /* Print minimum norm solution */
+    if( info > 0 ) {
+        NSLog(@"The algorithm computing SVD failed to converge;\n\tthe least squares solution could not be computed.\n" );
+    } else {
+        long *pivot;
+        pivot = malloc(sizeof(long)*(matrixSize));
+        cgetrf_(&m, &m, inv_a, &lda, pivot, &info);
+        cgetri_(&m, inv_a, &lda, pivot, work, &lwork, &info);
+        if (info > 0) {
+            NSLog(@"No inverse");
+        } else {
+            matrixState = SolvedMatrix;
+        }
+        free((void*)pivot);
+    }
+    free((void*)bb);
+    free((void*)norm_a);
+    free((void*)inv_a);
+    free( (void*)work );
 	if (matrixState==SolvedMatrix) {
         
 		//Display the results on the console
@@ -581,8 +610,8 @@
 		SolutionsViewController *theSolutions=[[[SolutionsViewController alloc] initWithNibName:@"Solutions" bundle:nil] autorelease];
 		
 		//Set the attributes for the viewcontroller, it will take charge of the memory management
-		theSolutions.a=a;
-        theSolutions.b=b;
+		theSolutions.a=inv_a;
+        theSolutions.b=bb;
         theSolutions.size=matrixSize;
         
 		//Push the viewController

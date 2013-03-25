@@ -8,6 +8,14 @@
 
 #import "SolutionsViewController.h"
 #pragma mark -
+@interface SolutionsViewController () {
+    int size;
+    NSMutableArray *labelsArray;
+    UIScrollView *layoutView;
+    UIView *container;
+    BOOL ip5;
+}
+@end
 
 @implementation SolutionsViewController
 
@@ -23,9 +31,9 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
 		self.title=@"MATSOL";
-		#ifdef	DEBUG_INTERFACE
+#ifdef	DEBUG_INTERFACE
 		self.title=@"MATSOL_SOLNS";
-		#endif
+#endif
 		
         UIScreen *mainScreen = [UIScreen mainScreen];
         CGFloat scale = ([mainScreen respondsToSelector:@selector(scale)] ? mainScreen.scale : 1.0f);
@@ -45,7 +53,7 @@
 		layoutView.delegate=self;
 		layoutView.bouncesZoom = NO;
 		layoutView.backgroundColor = [UIColor clearColor];
-
+        
 		[layoutView addSubview:container];
 	}
     return self;
@@ -122,7 +130,7 @@
 	//Assign as many text fields as needed.
 	for (height=0; height<size+1; height++) {
 		[labelsArray insertObject:[[[NSMutableArray alloc] init] autorelease] atIndex:height];
-		for (width=0; width<size; width++) { 
+		for (width=0; width<size; width++) {
 			[[labelsArray objectAtIndex:height] insertObject:[[[UILabel alloc] initWithFrame:CGRectMake(((height+1)*70)-55,((width+1)*45)-30, 65, 30)] autorelease] atIndex:width];
 			temp=[[labelsArray objectAtIndex:height] objectAtIndex:width];
 			
@@ -133,44 +141,87 @@
 			temp.backgroundColor=[UIColor clearColor];
 			
 			if (height<size) {
-				if (a[width][height]<1 || a[width][height]>-1) {
-					temp.text=[NSString stringWithFormat:@"%.5f",a[width][height]];
-				}
-				if (a[width][height]==0) {
-					temp.text=[NSString stringWithFormat:@"0"];
-				}
-				if (a[width][height]>1) {
-					temp.text=[NSString stringWithFormat:@"%.3f",a[width][height]];
-				}
-				temp.textColor=[UIColor whiteColor];
-			}
-			else {
-				
-				//Data for the solution text fields
-				temp.textColor=[UIColor redColor];
-				
-				//Formatting the string for the solutions column
-				if (b[width]<1 || b[width]>-1) {
-					temp.text=[NSString stringWithFormat:@"%c=%.5f",width+97,b[width]];
-				}
-				if (b[width]>1) {
-					temp.text=[NSString stringWithFormat:@"%c=%.3f",width+97,b[width]];
-				}
-				temp.frame=CGRectMake(((height+1)*70)-55,((width+1)*45)-30, 95, 30);
-				temp.textAlignment=UITextAlignmentLeft;
-				
-				//Solution column
-				referencePoint=temp.center;
-				referencePoint.x=referencePoint.x+20;
-				temp.center=referencePoint;
-			}
-			
-			//free the memory
-			[container addSubview:temp];
-		}
-	}
-	
-	container.frame=CGRectMake(0, 0, (75*(size+1))+50,(55*size)+15);
+                if (a[width+height*size].r!=0){
+				    if (a[width+height*size].i != 0) {
+                        if (a[width+height*size].i >= 0) {
+                            if (a[width+height*size].i == 1) {
+                                temp.text=[NSString stringWithFormat:@"%.4f+i",a[width+height*size].r];
+                            } else {
+                                temp.text=[NSString stringWithFormat:@"%.4f+%.4fi",a[width+height*size].r,a[width+height*size].i];
+                            }
+                        } else {
+                            if (a[width+height*size].i == -1) {
+                                temp.text=[NSString stringWithFormat:@"%.4f-i",a[width+height*size].r];
+                            } else {
+                                temp.text=[NSString stringWithFormat:@"%.4f%.4fi",a[width+height*size].r,a[width+height*size].i];
+                            }
+                        }
+                    }else {
+                        temp.text=[NSString stringWithFormat:@"%.4f",a[width+height*size].r];
+                    }
+                }else {
+                    if (a[width+height*size].i == 0) {
+                        temp.text=@"0";
+                    } else {
+                        
+                        temp.text=[NSString stringWithFormat:@"%.4fi",a[width+height*size].i];
+                    }
+                }
+                /*	if (a[width+height*size].r>1) {
+                 temp.text=[NSString stringWithFormat:@"%.3f",a[width+height*size].r];
+                 }*/
+                temp.textColor=[UIColor whiteColor];
+            } else {
+                
+                //Data for the solution text fields
+                temp.textColor=[UIColor redColor];
+                
+                //Formatting the string for the solutions column
+                if (b[width].r!=0){
+				    if (b[width].i != 0) {
+                        if (b[width].i >= 0) {
+                            if (b[width].i == 1) {
+                                temp.text=[NSString stringWithFormat:@"%c=%.5f+i",width+97,b[width].r];
+                            } else {
+                                temp.text=[NSString stringWithFormat:@"%c=%.4f+%.4fi",width+97,b[width].r,b[width].i];
+                            }
+                        } else {
+                            if (b[width].i == -1) {
+                                temp.text=[NSString stringWithFormat:@"%c=%.5f-i",width+97,b[width].r];
+                            } else {
+                                temp.text=[NSString stringWithFormat:@"%c=%.4f%.4fi",width+97,b[width].r,b[width].i];
+                            }
+                        }
+                    }else {
+                        temp.text=[NSString stringWithFormat:@"%.4f",a[width+height*size].r];
+                    }
+                }else {
+                    if (a[width+height*size].i == 0) {
+                        temp.text=[NSString stringWithFormat:@"%c=0",width+97];
+                    } else {
+                        temp.text=[NSString stringWithFormat:@"%c=%.4fi",width+97,b[width].i];
+                    }
+                }
+                
+                /*	if (b[width].r>1) {
+                 temp.text=[NSString stringWithFormat:@"%c=%.3f",width+97,b[width].r];
+                 }*/
+                temp.frame=CGRectMake(((height+1)*70)-55,((width+1)*45)-30, 95, 30);
+                temp.textAlignment=UITextAlignmentLeft;
+                
+                //Solution column
+                referencePoint=temp.center;
+                referencePoint.x=referencePoint.x+20;
+                temp.center=referencePoint;
+            }
+            
+            //free the memory
+            [container addSubview:temp];
+        }
+    }
+    
+    
+    container.frame=CGRectMake(0, 0, (75*(size+1))+50,(55*size)+15);
     layoutView.contentSize = container.frame.size;
     if (ip5) {
         layoutView.frame=CGRectMake(0, 0, 320, 474);
@@ -178,27 +229,27 @@
         layoutView.frame=CGRectMake(0, 0, 320, 386);
     }
     
-	//Add the scrollview to the view of the viewController
+    //Add the scrollview to the view of the viewController
     [[self view] addSubview:layoutView];
 }
 
 #pragma mark MemoryManagement
 - (void)viewDidUnload {
     [super viewDidUnload];
-	labelsArray=nil;
-	container=nil;
-	layoutView=nil;
+    labelsArray=nil;
+    container=nil;
+    layoutView=nil;
 }
 
 - (void)dealloc {
-	free(a);
-	free(b);
-	
-	[labelsArray release];
-	[container release];
-	[layoutView release];
-	
-	[super dealloc];
+    free(a);
+    free(b);
+    
+    [labelsArray release];
+    [container release];
+    [layoutView release];
+    
+    [super dealloc];
 }
 
 
