@@ -92,6 +92,7 @@
 		BEC8D1BE16CE968D00D7C442 /* GIDACalculateString.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC8D1BD16CE968D00D7C442 /* GIDACalculateString.m */; };
 		BEDD23C61518A3EF004265C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEDD23C51518A3EF004265C2 /* QuartzCore.framework */; };
 		BEEB47C1162967F2001A3973 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BEEB47C0162967F2001A3973 /* Default-568h@2x.png */; };
+		BEFBD31516FB7327004B1BB9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFBD31416FB7327004B1BB9 /* Accelerate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -209,6 +210,7 @@
 		BEC8D1BD16CE968D00D7C442 /* GIDACalculateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDACalculateString.m; path = GIDAUtilities/GIDACalculateString.m; sourceTree = "<group>"; };
 		BEDD23C51518A3EF004265C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BEEB47C0162967F2001A3973 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Default-568h@2x.png"; sourceTree = "<group>"; };
+		BEFBD31416FB7327004B1BB9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEFBD31516FB7327004B1BB9 /* Accelerate.framework in Frameworks */,
 				BEDD23C61518A3EF004265C2 /* QuartzCore.framework in Frameworks */,
 				9C1CF818125E9F020060A1B2 /* UIKit.framework in Frameworks */,
 				9C1CF81C125E9F120060A1B2 /* Foundation.framework in Frameworks */,
@@ -251,6 +254,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEFBD31416FB7327004B1BB9 /* Accelerate.framework */,
 				BEDD23C51518A3EF004265C2 /* QuartzCore.framework */,
 				9C1CF817125E9F020060A1B2 /* UIKit.framework */,
 				9C1CF81B125E9F120060A1B2 /* Foundation.framework */,
