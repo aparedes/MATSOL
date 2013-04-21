@@ -17,8 +17,8 @@
 @property (readwrite) __CLPK_complex *a;
 @property (readwrite) __CLPK_complex *b;
 @property (readwrite) int size;
-@property (retain, nonatomic) NSMutableArray *labelsArray;
-@property (retain, nonatomic) UIScrollView *layoutView;
-@property (retain, nonatomic) UIView *container;
+@property (strong, nonatomic) NSMutableArray *labelsArray;
+@property (strong, nonatomic) UIScrollView *layoutView;
+@property (strong, nonatomic) UIView *container;
 
 @end
