@@ -10,15 +10,19 @@
 #import "Conversor.h"
 #import "MATSOLDefines.h"
 
+@interface CopyableLabel : UILabel
+
+@end
+
 typedef enum{
 	MBaseConverterButtonFrom=-1,
 	MBaseConverterButtonTo=-2,
 	MBaseConverterButtonDelete=-3
 }MBaseConverterButton;
 
-@interface BaseConverterViewController : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate>  {
-	IBOutlet UILabel *fromLabel;
-	IBOutlet UILabel *toLabel;
+@interface BaseConverterViewController : UIViewController<UIActionSheetDelegate, UIPickerViewDelegate, UITextFieldDelegate>  {
+	IBOutlet CopyableLabel *fromLabel;
+	IBOutlet CopyableLabel *toLabel;
 	
 	IBOutlet UILabel *fromIndicator;
 	IBOutlet UILabel *toIndicator;
@@ -33,8 +37,8 @@ typedef enum{
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImage;
-@property (nonatomic, strong) IBOutlet UILabel *fromLabel;
-@property (nonatomic, strong) IBOutlet UILabel *toLabel;
+@property (nonatomic, strong) IBOutlet CopyableLabel *fromLabel;
+@property (nonatomic, strong) IBOutlet CopyableLabel *toLabel;
 @property (nonatomic, strong) IBOutlet UILabel *fromIndicator;
 @property (nonatomic, strong) IBOutlet UILabel *toIndicator;
 @property (nonatomic, strong) NSMutableArray *buttonsConverter;
