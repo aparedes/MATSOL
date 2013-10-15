@@ -153,6 +153,7 @@
 		6CD27C3C1801127600FCE783 /* Solutions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD27BF81801127600FCE783 /* Solutions.xib */; };
 		6CD27C3D180112BF00FCE783 /* Current.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6CD27B961801118200FCE783 /* Current.bundle */; };
 		6CD27C401801202700FCE783 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CD27B4B1801111700FCE783 /* MainWindow.xib */; };
+		6CD5E275180CDC11006CD4BE /* CopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CD5E274180CDC11006CD4BE /* CopyableLabel.m */; };
 		9C1CF818125E9F020060A1B2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CF817125E9F020060A1B2 /* UIKit.framework */; };
 		9C1CF81C125E9F120060A1B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CF81B125E9F120060A1B2 /* Foundation.framework */; };
 		9C1CF820125E9F1E0060A1B2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CF81F125E9F1E0060A1B2 /* CoreGraphics.framework */; };
@@ -362,6 +363,8 @@
 		6CD27BF61801127600FCE783 /* MatrixSheet.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MatrixSheet.xib; sourceTree = "<group>"; };
 		6CD27BF71801127600FCE783 /* Slave.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Slave.xib; sourceTree = "<group>"; };
 		6CD27BF81801127600FCE783 /* Solutions.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Solutions.xib; sourceTree = "<group>"; };
+		6CD5E273180CDC11006CD4BE /* CopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CopyableLabel.h; path = GIDAUtilities/CopyableLabel.h; sourceTree = "<group>"; };
+		6CD5E274180CDC11006CD4BE /* CopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CopyableLabel.m; path = GIDAUtilities/CopyableLabel.m; sourceTree = "<group>"; };
 		9C1CF817125E9F020060A1B2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9C1CF81B125E9F120060A1B2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9C1CF81F125E9F1E0060A1B2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -737,6 +740,8 @@
 				507BBC2F171B1AB9001B9079 /* GIDAMatrixCell.m */,
 				507BBC30171B1AB9001B9079 /* GIDAMatrixViewController.h */,
 				507BBC31171B1AB9001B9079 /* GIDAMatrixViewController.m */,
+				6CD5E273180CDC11006CD4BE /* CopyableLabel.h */,
+				6CD5E274180CDC11006CD4BE /* CopyableLabel.m */,
 			);
 			name = GIDA;
 			sourceTree = "<group>";
@@ -1028,6 +1033,7 @@
 				BEA18BFF151A7C7300B48EB7 /* Parenthesis.m in Sources */,
 				BEC8D1BE16CE968D00D7C442 /* GIDACalculateString.m in Sources */,
 				507BBC32171B1AB9001B9079 /* GIDAAlertView.m in Sources */,
+				6CD5E275180CDC11006CD4BE /* CopyableLabel.m in Sources */,
 				507BBC33171B1AB9001B9079 /* GIDAMatrixCell.m in Sources */,
 				507BBC34171B1AB9001B9079 /* GIDAMatrixViewController.m in Sources */,
 			);

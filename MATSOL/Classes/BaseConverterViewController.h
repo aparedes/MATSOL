@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Conversor.h"
 #import "MATSOLDefines.h"
+#import "CopyableLabel.h"
 
-@interface CopyableLabel : UILabel
-
-@end
 
 typedef enum{
 	MBaseConverterButtonFrom=-1,
