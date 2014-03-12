@@ -44,15 +44,17 @@
 	colorViewsArray=[[NSMutableArray alloc] init];
 	//Color bars for the image;
 	for (i=0; i<4; i++) {
-		[colorViewsArray insertObject:[[UIView alloc] initWithFrame:CGRectMake(102+(i*25), 55, 15, 55)] atIndex:i];
+		[colorViewsArray insertObject:[[UIView alloc] initWithFrame:CGRectMake(83+(i*35), 100, 25, 100)] atIndex:i];
 		[[colorViewsArray objectAtIndex:i] setBackgroundColor:[UIColor blackColor]];
 		[self.view addSubview:[colorViewsArray objectAtIndex:i]];
 	}
+    //CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
 	
 	//Color & size adjustments 
 	[[colorViewsArray objectAtIndex:3] setBackgroundColor:[UIColor whiteColor]];
-	[[colorViewsArray objectAtIndex:3] setFrame:CGRectMake(230, 40, 15, 80)];
-	
+	[[colorViewsArray objectAtIndex:3] setFrame:CGRectMake(213, 85, 25, 130)];
+	[self.view bringSubviewToFront:toleranceLabel];
+    [self.toleranceLabel setTransform:CGAffineTransformMakeRotation(-M_PI / 2)];
 	//Set an initial resistor value for the decoder
 	[colorPickerView selectRow:3 inComponent:0 animated:NO];
 	[colorPickerView selectRow:3 inComponent:1 animated:NO];
