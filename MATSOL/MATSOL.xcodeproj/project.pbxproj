@@ -207,8 +207,8 @@
 		50020DFF11D576DA00C61974 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		50020E1F11D576DA00C61974 /* MATSOL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MATSOL-Info.plist"; sourceTree = "<group>"; };
 		5068F7321230978300BAFDBF /* MATSOL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MATSOL.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		507BBC2C171B1AB9001B9079 /* GIDAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDAAlertView.h; path = GIDAUtilities/GIDAAlertView.h; sourceTree = "<group>"; };
-		507BBC2D171B1AB9001B9079 /* GIDAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDAAlertView.m; path = GIDAUtilities/GIDAAlertView.m; sourceTree = "<group>"; };
+		507BBC2C171B1AB9001B9079 /* GIDAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDAAlertView.h; path = External/GIDAAlertView/GIDAAlertView.h; sourceTree = "<group>"; };
+		507BBC2D171B1AB9001B9079 /* GIDAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDAAlertView.m; path = External/GIDAAlertView/GIDAAlertView.m; sourceTree = "<group>"; };
 		507BBC2E171B1AB9001B9079 /* GIDAMatrixCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDAMatrixCell.h; path = GIDAUtilities/GIDAMatrixCell.h; sourceTree = "<group>"; };
 		507BBC2F171B1AB9001B9079 /* GIDAMatrixCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDAMatrixCell.m; path = GIDAUtilities/GIDAMatrixCell.m; sourceTree = "<group>"; };
 		507BBC30171B1AB9001B9079 /* GIDAMatrixViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDAMatrixViewController.h; path = GIDAUtilities/GIDAMatrixViewController.h; sourceTree = "<group>"; };
@@ -373,8 +373,8 @@
 		9CB5F13E128C9351003117AD /* Conversor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Conversor.m; path = Utilities/Conversor.m; sourceTree = "<group>"; };
 		BEA18BFD151A7C7300B48EB7 /* Parenthesis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parenthesis.h; path = Classes/Parenthesis.h; sourceTree = "<group>"; };
 		BEA18BFE151A7C7300B48EB7 /* Parenthesis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parenthesis.m; path = Classes/Parenthesis.m; sourceTree = "<group>"; };
-		BEC8D1BC16CE968D00D7C442 /* GIDACalculateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDACalculateString.h; path = GIDAUtilities/GIDACalculateString.h; sourceTree = "<group>"; };
-		BEC8D1BD16CE968D00D7C442 /* GIDACalculateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDACalculateString.m; path = GIDAUtilities/GIDACalculateString.m; sourceTree = "<group>"; };
+		BEC8D1BC16CE968D00D7C442 /* GIDACalculateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GIDACalculateString.h; path = External/GIDACalculateString/GIDACalculateString.h; sourceTree = "<group>"; };
+		BEC8D1BD16CE968D00D7C442 /* GIDACalculateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GIDACalculateString.m; path = External/GIDACalculateString/GIDACalculateString.m; sourceTree = SOURCE_ROOT; };
 		BEDD23C51518A3EF004265C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 

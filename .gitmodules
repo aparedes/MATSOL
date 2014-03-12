@@ -1,0 +1,6 @@
+[submodule "MATSOL/External/GIDAAlertView"]
+	path = MATSOL/External/GIDAAlertView
+	url = git://github.com/GIDAIbero/GIDAAlertView.git
+[submodule "MATSOL/External/GIDACalculateString"]
+	path = MATSOL/External/GIDACalculateString
+	url = git://github.com/GIDAIbero/GIDACalculateString.git
